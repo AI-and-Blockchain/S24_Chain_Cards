@@ -2,8 +2,11 @@
 # Project Idea
 A D&D inspired card game with AI generated cards and battles. Cards are stored on the Ethereum Network.
 
-# Responsibilities:
+# Responsibilities
 Dante: Battling Mechanics & Card AI
-Chris: ERC-721 Token and Smart Contracts 
+
+Chris: ERC-721 Token and Smart Contracts
+
 Michael: Card Creation
+
 Yufei: Website
