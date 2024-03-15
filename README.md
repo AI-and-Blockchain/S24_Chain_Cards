@@ -10,3 +10,6 @@ Chris: ERC-721 Token and Smart Contracts
 Michael: Card Creation
 
 Yufei: Website
+
+# Meeting Schedule
+Weekly meetings in the Union
