@@ -12,3 +12,9 @@ The Chain Cards trade mechanism is designed around a user-friendly website that 
 AI Card Creation: A feature for players to interact with the AI, requesting new cards or modifications to existing ones.
 Sample Deck and Combat: A selection of AI generated decks that players can use to understand basic and advanced game mechanics through AI simulated combat scenarios.
 Trading Interface: A user-friendly interface (expected to be a website) for trading cards, integrated with blockchain technology for secure transactions.
+
+## User Stories
+
+
+## Design
+
