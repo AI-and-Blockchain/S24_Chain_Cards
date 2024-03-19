@@ -1,6 +1,6 @@
 # S24_Chain_Cards
 # Project Idea
-Chain Cards is a digital collectible card game on the blockchain developed by Michael Annor, Yufei Song, Dante Luis, and Chris . Chain cards allows players to create random characters cards in the form of NFTs (and if possible a physical card linked to it) to safely trade and engage in combat over the blockchain. 
+Chain Cards is a digital collectible card game on the blockchain developed by Michael Annor, Yufei Song, Dante Luis, and Chris for S24 AI and Blockchain. Chain cards allows players to create random characters cards in the form of NFTs (and if possible a physical card linked to it) to safely trade and engage in combat over the blockchain. 
 
 ## Character creation: 
 An AI fills out 10 D&D character sheets with stats (Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma), skills, and equipment. The AI also generates a short backstory, this is fed to another AI to create an image for the character. The information from the character sheet and the image are used to create a card similar to Magic the Gathering. This card will serve as a representation for the ERC-721 for each character.
