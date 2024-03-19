@@ -14,7 +14,7 @@ Sample Deck and Combat: A selection of AI generated decks that players can use t
 Trading Interface: A user-friendly interface (expected to be a website) for trading cards, integrated with blockchain technology for secure transactions.
 
 ## User Stories
-
+As an NFT collector and a gamer, I want a game that allows me to  
 
 ## Design
 
