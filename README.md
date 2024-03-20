@@ -16,5 +16,11 @@ Trading Interface: A user-friendly interface (expected to be a website) for trad
 ## User Stories
 As an NFT collector and a gamer, I want a game that allows me to  
 
+As a player, I wish to receive both a digital and a physical version of my character card, enabling me to collect tangible items and trade them in the real world while keeping the benefits of blockchain verification.
+
+As a new player, I need clear instructions on how to create my character and understand the stats, so that I can easily get started with the game.
+
+
+
 ## Design
 
