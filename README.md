@@ -8,6 +8,10 @@ An AI fills out 10 D&D character sheets with stats (Strength, Dexterity, Constit
 ## Trade:
 The Chain Cards trade mechanism is designed around a user-friendly website that leverages smart contracts for secure and transparent trading of character cards as NFTs. It offers features for listing cards for trade, setting prices via auctions or fixed rates, and facilitating direct trades between players. Smart contracts ensure atomicity in trades, guaranteeing simultaneous asset swaps to prevent fraud. Users can manage their NFTs and transactions through digital wallet integration with platforms like MetaMask and WalletConnect. An optional feature links each NFT to a physical card or card in NFTs via a unique identifier, adding a tangible aspect to the collectibles. The platform prioritizes high security standards and compliance with regulations to protect user data and ensure lawful operations.
 
+## AI algorithms/models
+
+## Blockchain architecture
+
 ## Expected Features for the Demo:
 AI Card Creation: A feature for players to interact with the AI, requesting new cards or modifications to existing ones.
 Sample Deck and Combat: A selection of AI generated decks that players can use to understand basic and advanced game mechanics through AI simulated combat scenarios.
