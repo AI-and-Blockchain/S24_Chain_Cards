@@ -14,13 +14,19 @@ Sample Deck and Combat: A selection of AI generated decks that players can use t
 Trading Interface: A user-friendly interface (expected to be a website) for trading cards, integrated with blockchain technology for secure transactions.
 
 ## User Stories
-As an NFT collector and a gamer, I want a game that allows me to  
+As an NFT collector and a gamer, I want a fun and interactive way to collect NFTs and use them to engage others with them.  
 
 As a player, I wish to receive both a digital and a physical version of my character card, enabling me to collect tangible items and trade them in the real world while keeping the benefits of blockchain verification.
 
 As a new player, I need clear instructions on how to create my character and understand the stats, so that I can easily get started with the game.
 
+As an NFT collector, I want ways to trade and gain new cards that seem more suitable to me.
 
+As a player, I want different there to be a variety of combat forms with different stakes and rewards.
+
+As a player, I want my characters to be secure with no chance of them being manipulated.
 
 ## Design
+![Check_In2](https://github.com/AI-and-Blockchain/S24_Chain_Cards/assets/89411564/6fba9533-f627-49cf-84b7-e6cd5b061ffa)
+
 
