@@ -14,10 +14,6 @@ The Chain Cards trade mechanism is designed around a user-friendly website that 
 ## Sequence diagram
 ![Check_In2](https://github.com/AI-and-Blockchain/S24_Chain_Cards/assets/89411564/6fba9533-f627-49cf-84b7-e6cd5b061ffa)
 
-## AI algorithms/models
-
-## Blockchain architecture
-
 ## Expected Features for the Demo:
 AI Card Creation: A feature for players to interact with the AI, requesting new cards or modifications to existing ones.
 Sample Deck and Combat: A selection of AI generated decks that players can use to understand basic and advanced game mechanics through AI simulated combat scenarios.
