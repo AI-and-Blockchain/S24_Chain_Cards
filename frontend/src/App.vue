@@ -1,47 +1,95 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
 </script>
 
+
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <a-layout class="layout">
+    <a-layout-header>
+      <div>Welcome to the Chain Card</div>
+    </a-layout-header>
+    <main>
+      <div id="app" class="container">
+        <a-button type="primary" @click="connectWallet">Connect to MetaMask</a-button><br>
+        <div v-if="account" class="message">
+          <a-alert type="success" message="Wallet Connected" :description="`Address: ${account}`" show-icon /><br>
+          <a-button type="primary" @click="">Start</a-button>
+        </div>
+      </div>
+    </main>
+  </a-layout>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<!-- <template>
+    <header>
+      <div>Welcome to the Chain Card</div>
+    </header>
+    <main>
+      <div id="app" class="container">
+        <a-button type="primary" @click="connectWallet">Connect to MetaMask</a-button>
+        <div v-if="account" class="message">
+          <a-alert type="success" message="Wallet Connected" :description="`Address: ${account}`" show-icon />
+        </div>
+      </div>
+    </main>
+</template> -->
+
+
+<script>
+import { ref, computed } from 'vue';
+import { ethers } from 'ethers';
+import { Button as AButton, Alert as AAlert, Layout as ALayout, LayoutHeader as ALayoutHeader, LayoutContent as ALayoutContent } from 'ant-design-vue';
+
+
+export default {
+  name: 'App',
+  components: {
+    AButton,
+    AAlert,
+    ALayout,
+    ALayoutHeader,
+    ALayoutContent
+  },
+  setup() {
+    const account = ref(null);
+
+    const walletDescription = computed(() => {
+      return `Address: ${account.value}`;
+    });
+
+    async function connectWallet() {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          account.value = accounts[0];
+        } catch (error) {
+          console.error('Failed to connect wallet:', error);
+        }
+      } else {
+        alert('Please install MetaMask!');
+      }
+    }
+
+    return { account, connectWallet, walletDescription };
+  },
+};
+</script>
+
+<style>
+.header{
+
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px;
+  width: 100%;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.message {
+  width: 100%;
+  margin-top: 15px;
+  align-items: center;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
