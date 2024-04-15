@@ -14,7 +14,8 @@ The Chain Cards trade mechanism is designed around a user-friendly website that 
 
 
 ## Sequence diagram
-![image](https://github.com/AI-and-Blockchain/S24_Chain_Cards/assets/90219263/e924a0b9-4006-4f5f-9c12-51af73584f57)
+![image](https://github.com/AI-and-Blockchain/S24_Chain_Cards/assets/90219263/9a8a821e-9309-4425-95d9-ffd280eb16f3)
+
 
 
 ## Expected Features for the Demo:
