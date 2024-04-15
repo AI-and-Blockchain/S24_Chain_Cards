@@ -1,7 +1,15 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import UserInfo from './UserInfo.vue';
+import Combat from './Combat.vue';
+import Trade from './Trade.vue';
+
+
+
+
+
 const account = ref(null); // Define account as a reactive ref
-const selectedKeys = ref(['2']); // Default selected menu item
+const selectedKeys = ref(['1']); // Default selected menu item
 
 function checkForConnectedWallet() {
   try {
@@ -30,13 +38,15 @@ onMounted(async () => {
         mode="horizontal"
         :style="{ lineHeight: '64px' }"
       >
-        <a-menu-item key="1">user info</a-menu-item>
+        <a-menu-item key="1">Cards</a-menu-item>
         <a-menu-item key="2">combet</a-menu-item>
         <a-menu-item key="3">trade</a-menu-item>
       </a-menu>
     </a-layout-header>
     <a-layout-content style="padding: 0 50px">
-      <div :style="{ background: '#fff', padding: '24px', minHeight: '280px' }">Content</div>
+      <UserInfo v-if="selectedKeys[0] === '1'" />
+      <Combat v-if="selectedKeys[0] === '2'" />
+      <Trade v-if="selectedKeys[0] === '3'" />
     </a-layout-content>
     <a-layout-footer style="text-align: center">
       Chain card
