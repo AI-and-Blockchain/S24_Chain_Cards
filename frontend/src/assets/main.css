@@ -1,35 +1,48 @@
-@import './base.css';
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+/* 应用于整个布局容器，确保它填满整个视口 */
+.layout {
+  min-height: 100vh; /* 视口的全高 */
+  width: 100%; /* 填满可用宽度 */
+  display: flex;
+  flex-direction: column; /* 子项垂直排列 */
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+/* 样式应用于布局头部 */
+.a-layout-header {
+  width: 100%; /* 确保头部填满宽度 */
+  line-height: 64px; /* 或者根据你的设计调整 */
+  padding: 0 50px; /* 根据你的设计调整内边距 */
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+/* 主内容区域的样式 */
+main {
+  flex: 1; /* 让主内容区域填满剩余空间 */
+  width: 100%; /* 填满可用宽度 */
+  padding: 20px; /* 或者根据你的设计调整 */
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+/* 容器样式，可以根据需要添加更多样式 */
+.container {
+  max-width: 600px; /* 最大宽度，根据需要调整 */
+  margin: 0 auto; /* 水平居中 */
+  padding: 60px 15px; /* 内边距，根据需要调整 */
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+/* 消息样式，当钱包连接成功时显示 */
+.message {
+  width: 100%;
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+/* 按钮样式 */
+.a-button {
+  margin: 10px; /* 按钮之间的间隔 */
+  padding: 4px 15px;
+  width: 50px;
+}
+
+/* 警告框样式 */
+.a-alert {
+  width: 100%; /* 填满可用宽度 */
 }
