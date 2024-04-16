@@ -1,4 +1,5 @@
 import os
+import json
 import nft_storage
 from web3 import Web3
 from pprint import pprint
@@ -25,8 +26,14 @@ with nft_storage.ApiClient(configuration) as api_client:
 
 
 web3 = Web3(Web3.HTTPProvider("https://sepolia.infura.io/v3/e13984f0796b4718a19486917341098c"))
+# web3.eth.defaultAccount = web3.eth.accounts[0]
+
+contract_path = 'build/contracts/planeswalker.json'
 contract_address = "0x5E72959b89d271Da4E79a0caf49EAd7c291777A2"
-contract_abi = [...]
+with open(contract_path) as file:
+    contract_json = json.load(file)
+    contract_abi = contract_json['abi']
+    
 
 contract = web3.eth.contract(address=contract_address, abi=contract_abi)
 
