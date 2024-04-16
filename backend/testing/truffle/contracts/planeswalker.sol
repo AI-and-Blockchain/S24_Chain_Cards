@@ -1,14 +1,15 @@
-// SPDX-License-IDentifier: MIT
-pragma solidity ^0.8.20;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.7;
 
-import "@openzeppelin/contracts@5.0.0/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts@5.0.0/token/ERC721/extensions/ERC721Burnable.sol";
-import "@openzeppelin/contracts@5.0.0/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts@5.0.0/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract PlanesWalker is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
-    using Counters.Counter private tokenIDs;
+    using Counters for Counters.Counter; 
+    Counters.Counter private tokenIDs;
     constructor(address initialOwner)
         ERC721("PlanesWalker", "PW")
         Ownable(initialOwner)
@@ -16,8 +17,8 @@ contract PlanesWalker is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
 
     function safeMint(address to, string memory uri)
         public
-        return (uint256)
         onlyOwner
+        returns (uint256)
     {
         uint256 walkerID = tokenIDs.current();
         _safeMint(to, walkerID);

@@ -1,9 +1,9 @@
 import os
 import json
 import nft_storage
-from web3 import Web3
+from web3 import Web3, HTTPProvider
 from pprint import pprint
-import starter_pack from ai
+from ai import starter_pack
 from dotenv import load_dotenv
 from nft_storage.api import nft_storage_api
 from nft_storage.model.get_response import GetResponse
@@ -28,12 +28,11 @@ with nft_storage.ApiClient(configuration) as api_client:
 web3 = Web3(Web3.HTTPProvider("https://sepolia.infura.io/v3/e13984f0796b4718a19486917341098c"))
 # web3.eth.defaultAccount = web3.eth.accounts[0]
 
-contract_path = 'build/contracts/planeswalker.json'
+contract_path = 'build/contracts/planeswalker.sol'
 contract_address = "0x5E72959b89d271Da4E79a0caf49EAd7c291777A2"
 with open(contract_path) as file:
     contract_json = json.load(file)
     contract_abi = contract_json['abi']
-    
 
 contract = web3.eth.contract(address=contract_address, abi=contract_abi)
 
@@ -41,7 +40,7 @@ def generate_matadata(Character):
     metadata = {
         "name": Character.name,
         "description": Character.description,
-        "image": Character.image,
+        # "image": Character.image,
         "stats": Character.stats,
         "inventory": Character.inventory,
         "backstory": Character.backstory
