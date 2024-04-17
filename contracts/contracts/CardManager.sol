@@ -1,46 +1,12 @@
 //SPDX-License-Identifier: Apache
 pragma solidity ^0.8.25;
 
-import {VRFCoordinatorV2Interface} from "smartcontractkit/chainlink@2.9.0/contracts/src/v0.8/vrf/interfaces/VRFCoordinatorV2Interface.sol";
-import {VRFConsumerBaseV2} from "smartcontractkit/chainlink@2.9.0/contracts/src/v0.8/vrf/VRFConsumerBaseV2.sol";
-import {ConfirmedOwner} from "smartcontractkit/chainlink@2.9.0/contracts/src/v0.8/shared/access/ConfirmedOwner.sol";
-
-contract AICharacterGenerator is ChainlinkClient {
-    using Chainlink for Chainlink.Request;
-
-    // Chainlink Node address
-    address private oracle;
-    bytes32 private jobId;
-    uint256 private fee;
-
-    // store data from API
-    string public characters;
-
-    // event for API result
-    event RequestCharactersFulfilled(bytes32 indexed requestId, string indexed data);
-
-    constructor() {
-        setPublicChainlinkToken();
-        oracle = 0x<Oracle_Address>;
-        jobId = "<Job_ID>";
-        fee = 0.1 * 10 ** 18; // 0.1 LINK
-    }
-
-    function requestCharacterData(string memory apiUrl) public returns (bytes32 requestId) {
-        Chainlink.Request memory request = buildChainlinkRequest(jobId, address(this), this.fulfill.selector);
-        request.add("get", apiUrl);
-        request.add("path", "data.path.to.characters"); // adjest to match the structure
-        return sendChainlinkRequestTo(oracle, request, fee);
-    }
-
-    function fulfill(bytes32 _requestId, string memory _characters) public recordChainlinkFulfillment(_requestId) {
-        characters = _characters;
-        emit RequestCharactersFulfilled(_requestId, _characters);
-    }
-}
+import {VRFCoordinatorV2Interface} from "@chainlink/contracts/src/v0.8/vrf/interfaces/VRFCoordinatorV2Interface.sol";
+import {VRFConsumerBaseV2} from "@chainlink/contracts/src/v0.8/vrf/VRFConsumerBaseV2.sol";
+import {ConfirmedOwner} from "@chainlink/contracts/src/v0.8/shared/access/ConfirmedOwner.sol";
 
 contract CardManager is VRFConsumerBaseV2, ConfirmedOwner {
-  event RequestSent(uint256 requestId, uint32 numWords);
+    event RequestSent(uint256 requestId, uint32 numWords);
     event RequestFulfilled(uint256 requestId, uint256[] randomWords);
 
     struct RequestStatus {
@@ -94,6 +60,11 @@ contract CardManager is VRFConsumerBaseV2, ConfirmedOwner {
             0x8103B0A8A00be2DDC778e6e7eaa21791Cd364625
         );
         s_subscriptionId = subscriptionId;
+    }
+
+    function battle(address token1, address token2) public
+    {
+        
     }
 
     // Assumes the subscription is funded sufficiently.
