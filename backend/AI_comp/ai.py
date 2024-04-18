@@ -18,7 +18,7 @@ class Character:
 client = OpenAI()
 
 # Define the message containing your prompt
-prompt = "create 10 unique d&d characters with stats, equipment, weapon, and a backstory"
+prompt = "create 10 unique d&d characters each with a name, race, class, stats, equipment, weapon, and a backstory"
 
 # Send the request to GPT-3.5 to generate the completion
 response = client.chat.completions.create(
@@ -27,7 +27,6 @@ response = client.chat.completions.create(
         {"role": "user", "content": prompt}
     ],
 )
-
 
 chunk = str(response.choices[0].message.content)
 
@@ -42,14 +41,13 @@ equipment = []
 backstories = []
 
 for character in generated_characters:
-    names.append(character.split("Name: ")[1].split("\n")[0])
-    races.append(character.split("Race: ")[1].split("\n")[0])
-    classes.append(character.split("Class: ")[1].split("\n")[0])
+    names.append(character.split("Name:")[1].split("\n")[0])
+    races.append(character.split("Race:")[1].split("\n")[0])
+    classes.append(character.split("Class:")[1].split("\n")[0])
     stats.append(character.split("Stats:")[1].split("\n")[0])
     equipment.append(character.split("Equipment:")[1].split("\nBackstory")[0])
     backstories.append(character.split("Backstory:")[1])
 
-print("completed")
 # Use backstories as prompts for DALL·E to generate images
 # images = []
 # for story in backstories:

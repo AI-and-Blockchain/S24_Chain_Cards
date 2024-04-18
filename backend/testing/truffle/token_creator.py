@@ -24,10 +24,6 @@ configuration = nft_storage.Configuration(
     access_token = os.getenv("NFTStorage_API_KEY")
 )
 
-with nft_storage.ApiClient(configuration) as api_client:
-    api_instance = nft_storage_api.NFTStorageAPI(api_client)
-
-
 web3 = Web3(Web3.HTTPProvider("https://sepolia.infura.io/v3/e13984f0796b4718a19486917341098c"))
 # web3.eth.defaultAccount = web3.eth.accounts[0]
 
@@ -52,19 +48,17 @@ def generate_matadata(Character):
     }
     return metadata
 
+
+
 def store_metadata(metadata):
-    api_response = api_instance.store(metadata)
+    data = open("metadata.json", "w")
+    json.dump(metadata, data)
+    data.close()
+
+    with nft_storage.ApiClient(configuration) as api_client:
+        api_instance = nft_storage_api.NFTStorageAPI(api_client)
+        body = open("/home/mick/Documents/S24_Chain_Cards/backend/metadata.json")
+    api_response = api_instance.store(body)
     pprint(api_response)
+    os.remove("metadata.json")
 
-
-def mint_nft(owner_address, metadata_uri):
-    tx_hash = contract.functions.safeMint(owner_address, metadata_uri).transact()
-    receipt = web3.ethwait.ForTransactionReceipt(tx_hash)
-    return receipt
-
-for character in starter_pack:
-    metadata = generate_matadata(character)
-    owner_address = '0xBBAc2417C41aD50A37dF157Fee60B4CD34f802b7'
-    metadata_uri = store_metadata(metadata)
-    mint_receipt = mint_nft(owner_address, metadata_uri)
-    print(f"NFT for {character.Name} minted. Transaction hash: {mint_receipt.transactHash.hex()}")
