@@ -44,7 +44,7 @@ contract CardManager is VRFConsumerBaseV2, ConfirmedOwner {
 
     // For this example, retrieve 2 random values in one request.
     // Cannot exceed VRFCoordinatorV2.MAX_NUM_WORDS.
-    uint32 numWords = 5;
+    uint32 numWords = 2;
 
     /**
      * HARDCODED FOR SEPOLIA
@@ -62,9 +62,11 @@ contract CardManager is VRFConsumerBaseV2, ConfirmedOwner {
         s_subscriptionId = subscriptionId;
     }
 
-    function battle(address token1, address token2) public
+    function battle() public view returns(bool)
     {
-        
+        require(requestIds.length > 0);
+        RequestStatus memory r = s_requests[lastRequestId];
+        return r.randomWords[0] - r.randomWords[1] > 0;
     }
 
     // Assumes the subscription is funded sufficiently.
