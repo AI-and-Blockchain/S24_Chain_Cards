@@ -1,4 +1,3 @@
-
 from openai import OpenAI
 # Image,
 class Character:
@@ -64,5 +63,5 @@ for character in generated_characters:
 # images[i],
 starter_pack = []
 for i in range(10):
-    char = Character(names[i], races[i], classes[i], stats[i],  backstories[i], equipment[i])
+    char = Character(names[i], races[i], classes[i], stats[i], backstories[i], equipment[i])
     starter_pack.append(char)

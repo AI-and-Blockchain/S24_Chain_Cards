@@ -7,6 +7,10 @@ import sys
 sys.path.append('/home/mick/Documents/S24_Chain_Cards/backend/AI_comp')
 from ai import starter_pack
 
+private_key = "2f67646d4bc58ea4e07bc98ef759704d4fcbf91aee3db3871f30863ad804a47f"
+
+
+
 blockfrost_api_key = "ipfsp4RZYMEmRUGPMX0fOGdUnaE5ynrNWDg3"
 
 base_endpoint = "https://ipfs.blockfrost.io/api/v0"
@@ -52,7 +56,14 @@ def store_metadata(metadata):
     return metadata_uri
 
 def mint_nft(owner_address, metadata_uri):
-    tx_hash = contract.functions.safeMint(owner_address, metadata_uri)
+    nonce = web3.eth.get_transaction_count(owner_address)
+    tx_dict = contract.functions.safeMint(owner_address, metadata_uri).build_transaction({
+        "nonce": nonce,
+        "gasPrice": web3.eth.gas_price,
+        "from": owner_address
+    })
+    signed_tx = web3.eth.account.sign_transaction(tx_dict, private_key=private_key)
+    tx_hash = web3.eth.send_raw_transaction(signed_tx.rawTransaction)
     receipt = web3.eth.wait_for_transaction_receipt(tx_hash)
     return receipt
 
@@ -67,9 +78,10 @@ for character in starter_pack:
     owner_address = '0xBBAc2417C41aD50A37dF157Fee60B4CD34f802b7'
     metadata_uri = store_metadata(metadata)
     mint_receipt = mint_nft(owner_address, metadata_uri)
-    print(f"NFT for {character.Name} minted. Transaction hash: {mint_receipt.transactHash.hex()}")
+    print(f"NFT for {character.Name} minted. Transaction hash: {mint_receipt.transactionHash.hex()}")
 
 
 
 
 
+  
