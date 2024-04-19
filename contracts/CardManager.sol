@@ -66,7 +66,7 @@ contract CardManager is VRFConsumerBaseV2, ConfirmedOwner {
     {
         require(requestIds.length > 0);
         RequestStatus memory r = s_requests[lastRequestId];
-        return str1 * (r.randomWords[0]%20) > str2 * (r.randomWords[1] % 20);
+        return str1 * (int)(r.randomWords[0]%20) > str2 * (int)(r.randomWords[1] % 20);
     }
 
     // Assumes the subscription is funded sufficiently.
