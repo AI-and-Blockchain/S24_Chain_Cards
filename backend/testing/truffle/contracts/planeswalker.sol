@@ -29,6 +29,18 @@ contract PlanesWalker is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
         return walkerID;
     }
 
+    function transfer(
+        address from,
+        address to,
+        uint256 tokenID
+    ) public {
+        require(
+            _isApprovedOrOwner(_msgSender(), tokenID),
+            "ERC721: transfer caller is not owner nor approved"
+        );
+        _transfer(from, to, tokenID);
+    }
+
     // The following functions are overrides required by Solidity.
 
     function tokenURI(uint256 tokenID)

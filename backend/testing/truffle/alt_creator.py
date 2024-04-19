@@ -4,7 +4,8 @@ import json
 from pprint import pprint
 from web3 import Web3, HTTPProvider
 import sys
-sys.path.append('/home/mick/Documents/S24_Chain_Cards/backend/AI_comp')
+# File paths are written with the assumption this is being run from its current location, the truffle directory.
+sys.path.append('/../../AI_comp')
 from ai import starter_pack
 
 private_key = "2f67646d4bc58ea4e07bc98ef759704d4fcbf91aee3db3871f30863ad804a47f"
@@ -18,7 +19,7 @@ base_endpoint = "https://ipfs.blockfrost.io/api/v0"
 headers={"project_id":f'{blockfrost_api_key}'}
 
 web3 = Web3(Web3.HTTPProvider("https://sepolia.infura.io/v3/e13984f0796b4718a19486917341098c"))
-contract_path = '/home/mick/Documents/S24_Chain_Cards/backend/testing/truffle/build/contracts/PlanesWalker.json'
+contract_path = 'build/contracts/PlanesWalker.json'
 contract_address = "0x5E72959b89d271Da4E79a0caf49EAd7c291777A2"
 
 with open(contract_path) as file:
