@@ -1,5 +1,9 @@
 from openai import OpenAI
-# Image,
+
+# ai.py prompts ChatGPT 3.5 Turbo to create 10 D&D inspired characters with the requested attributes so the details can be passed to token_creator.py
+# NOTE: Generating images should be commented out for testing to avoid spending money!
+
+#When intending to create cards WITH images, un-comment line 13 and add "Image" as an input between Stats and Backstory
 class Character:
     def __init__(self, Name, Race, Class, Stats, Image, Backstory, Equipment):
         self.Name = Name
