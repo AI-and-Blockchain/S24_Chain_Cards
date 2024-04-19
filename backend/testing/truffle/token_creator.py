@@ -10,7 +10,8 @@ from ai import starter_pack
 
 private_key = "2f67646d4bc58ea4e07bc98ef759704d4fcbf91aee3db3871f30863ad804a47f"
 
-
+# token_creator takes the 10 characters created by ChatGPT 3.5 in ai.py, stores their information
+# in easily accessible json files, then mints an NFT with all the appropriate information.
 
 blockfrost_api_key = "ipfsp4RZYMEmRUGPMX0fOGdUnaE5ynrNWDg3"
 
