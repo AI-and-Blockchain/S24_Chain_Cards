@@ -62,11 +62,11 @@ contract CardManager is VRFConsumerBaseV2, ConfirmedOwner {
         s_subscriptionId = subscriptionId;
     }
 
-    function battle() public view returns(bool)
+    function battle(int str1, int str2) public view returns(bool)
     {
         require(requestIds.length > 0);
         RequestStatus memory r = s_requests[lastRequestId];
-        return r.randomWords[0] - r.randomWords[1] > 0;
+        return str1 * (r.randomWords[0]%20) > str2 * (r.randomWords[1] % 20);
     }
 
     // Assumes the subscription is funded sufficiently.
