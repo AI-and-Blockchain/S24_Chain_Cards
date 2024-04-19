@@ -1,6 +1,8 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import { ref, computed } from 'vue';
+import {useWallet} from './userWallet'
+
 const headerStyle = {
   textAlign: 'center',
   color: '#fff',
@@ -10,13 +12,13 @@ const headerStyle = {
   backgroundColor: '#7dbcea',
 };
 
-const account = ref(null);
+const { account } = useWallet();
+const router = useRouter();
 
 const walletDescription = computed(() => {
   return `Address: ${account.value}`;
 });
 
-const router = useRouter();
 
 async function connectWallet() {
   if (typeof window.ethereum !== 'undefined') {
@@ -24,7 +26,6 @@ async function connectWallet() {
       const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
       account.value = accounts[0];
       localStorage.setItem('connectedWallet', account.value); // Store the connected wallet address in local storage
-      goToMainPage();
     } catch (error) {
       console.error('Failed to connect wallet:', error);
     }
