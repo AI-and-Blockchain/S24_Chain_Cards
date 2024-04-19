@@ -1,5 +1,6 @@
 from openai import OpenAI
-# Image,
+
+#When intending to create cards WITH images, un-comment line 10 and add "Image" as an input between Stats and Backstory
 class Character:
     def __init__(self, Name, Race, Class, Stats,  Backstory, Equipment):
         self.Name = Name

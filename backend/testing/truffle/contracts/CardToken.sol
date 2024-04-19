@@ -8,11 +8,11 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 // import "@openzeppelin/contracts/utils/Counters.sol";
 import "openzeppelin-solidity/contracts/utils/Counters.sol";
 
-contract PlanesWalker is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
+contract CardToken is ERC721, ERC721URIStorage, ERC721Burnable, Ownable {
     using Counters for Counters.Counter; 
     Counters.Counter private tokenIDs;
     constructor(address initialOwner)
-        ERC721("PlanesWalker", "PW")
+        ERC721("CardToken", "PW")
         Ownable(initialOwner)
     {}
 
