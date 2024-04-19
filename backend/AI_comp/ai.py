@@ -18,7 +18,7 @@ class Character:
         return f"{self.Name} {self.Race} {self.Class} {self.Stats} {self.Backstory} {self.Equipment}"
 
 # OpenAI.api_key api_key = OpenAI.api_key
-api_key = "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"
+
 client = OpenAI(api_key=api_key)
 # Define the message containing your prompt
 prompt = "create 10 unique d&d characters each with a name, race, class, stats, equipment, weapon, and a backstory"
