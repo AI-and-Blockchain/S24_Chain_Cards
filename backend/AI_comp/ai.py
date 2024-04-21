@@ -5,12 +5,12 @@ from openai import OpenAI
 
 #When intending to create cards WITH images, un-comment line 13 and add "Image" as an input between Stats and Backstory
 class Character:
-    def __init__(self, Name, Race, Class, Stats,  Backstory, Equipment):
+    def __init__(self, Name, Race, Class, Stats, Image, Backstory, Equipment):
         self.Name = Name
         self.Race = Race
         self.Class = Class
         self.Stats = Stats
-        # self.Image = Image
+        self.Image = Image
         self.Backstory = Backstory
         self.Equipment = Equipment
 
@@ -18,8 +18,8 @@ class Character:
         return f"{self.Name} {self.Race} {self.Class} {self.Stats} {self.Backstory} {self.Equipment}"
 
 # OpenAI.api_key api_key = OpenAI.api_key
-client = OpenAI()
 
+client = OpenAI(api_key=api_key)
 # Define the message containing your prompt
 prompt = "create 10 unique d&d characters each with a name, race, class, stats, equipment, weapon, and a backstory"
 
@@ -52,20 +52,20 @@ for character in generated_characters:
     backstories.append(character.split("Backstory:")[1])
 
 # Use backstories as prompts for DALL·E to generate images
-# images = []
-# for story in backstories:
-#     response = client.images.generate(
-#         model="dall-e-3",
-#         prompt=story,
-#         size="1024x1024",
-#         quality="standard",
-#         n=1,
-#     )
-#     image_url = response.data[0].url
-#     images.append(image_url)
+images = []
+for story in backstories:
+    response = client.images.generate(
+        model="dall-e-3",
+        prompt=story,
+        size="1024x1024",
+        quality="standard",
+        n=1,
+    )
+    image_url = response.data[0].url
+    images.append(image_url)
 
-# images[i],
+
 starter_pack = []
 for i in range(10):
-    char = Character(names[i], races[i], classes[i], stats[i], backstories[i], equipment[i])
+    char = Character(names[i], races[i], classes[i], stats[i], images[i], backstories[i], equipment[i])
     starter_pack.append(char)
