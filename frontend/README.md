@@ -20,6 +20,7 @@ npm install
 
 ```sh
 npm run dev
+python pyserver.py
 ```
 
 ### Compile and Minify for Production
