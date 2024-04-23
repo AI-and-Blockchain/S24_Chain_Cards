@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router';
 import { ref, computed } from 'vue';
 import {useWallet} from './userWallet'
-
+import axios from 'axios';
 const headerStyle = {
   textAlign: 'center',
   color: '#fff',
@@ -38,6 +38,7 @@ async function connectWallet() {
 
 async function goToNextPage() {
   router.push('/main');
+  axios.post('http://localhost:5000/trigger')；
 }
 </script>
 
