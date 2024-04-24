@@ -7,9 +7,9 @@ const selectedCharacter1 = ref('Select Character 1');
 const selectedCharacter2 = ref('Select Character 2');
 function selectCharacter(character, index) {
   if (index === 1) {
-    selectedCharacter1.value = character.name;
+    selectedCharacter1.value = character.state;
   } else {
-    selectedCharacter2.value = character.name;
+    selectedCharacter2.value = character.state;
   }
 }
 onMounted(() => {
@@ -309,7 +309,7 @@ async function initWeb3() {
     const wallet = new ethers.Wallet("2f67646d4bc58ea4e07bc98ef759704d4fcbf91aee3db3871f30863ad804a47f",provider)
     const signer = provider.getSigner();
     const contract = new ethers.Contract(contractAddress, contractABI,wallet);
-    const data = await contract.battle("130", "2");
+    const data = await contract.battle(selectedCharacter1.value, selectedCharacter2.value);
     console.log(data);
     if(data){
       winner.value=1;
