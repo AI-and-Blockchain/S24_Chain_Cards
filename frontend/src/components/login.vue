@@ -38,7 +38,7 @@ async function connectWallet() {
 
 async function goToNextPage() {
   router.push('/main');
-  axios.post('http://localhost:5000/trigger')；
+  axios.post('http://localhost:5000/generate_char')；
 }
 </script>
 
